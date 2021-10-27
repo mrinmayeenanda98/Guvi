@@ -1,46 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>countdown</title>
+    <style>
+        #container {
+           
+            text-align: center;
+            align-items: center;
+            
+        }
+
+        span {
+            font-size: 100px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            text-shadow: 1px 1px 2px black, 0 0 20px blue, 0 0 5px darkblue;
+        }
+
+
+        #btn {
+            height: 50px;
+            width: 150px;
+            background-color: black;
+        }
+        body { 
+            margin:20px;  background-color:  #aaff80; text-align:center; 
+        }
+
+        .btnAlign{
+            height: 50px;
+             width:100px;
+             font-size: 30px; 
+             margin-top: 37px;
+             
+             text-shadow: 1px 1px 2px black, 0 0 10px greenyellow, 0 0 5px green;
+             background-color: darkcyan;
+
+        }
+       
+.balloon {
+  display:inline-block;
+   width:120px;
+  height:145px;
+  background:hsl(215,50%,65%);
+  border-radius:80%;
+  position:relative;
+  box-shadow:inset -10px -10px 0 rgba(0,0,0,0.07);
+  margin:20px 30px;
+  transition:transform 0.5s ease;
+  z-index:10;
+  animation:balloons 4s ease-in-out infinite;
+  transform-origin:bottom center;
+}
+
+@keyframes balloons {
+  0%,100%{ transform:translateY(0) rotate(-4deg); }
+  50%{ transform:translateY(-25px) rotate(4deg); }
+}
+
+
+.balloon:before {
+  content:"▲";
+  font-size:20px;
+  color:hsl(215,30%,50%);
+  display:block;
+  text-align:center;
+  width:100%;
+  position:absolute;
+  bottom:-12px;
+  z-index:-100;
+}
+
+.balloon:after {
+ display:inline-block; top:153px;
+  position:absolute;
+  height:250px;
+  width:1px;
+  margin:0 auto;
+  content:"";
+  background:rgba(0,0,0,0.2); 
+}
+
+.balloon:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3.5s; }
+.balloon:nth-child(2):before { color:hsl(245,40%,65%);  }
+
+.balloon:nth-child(3){ background:hsl(139,50%,60%); animation-duration:3s; }
+.balloon:nth-child(3):before { color:hsl(139,30%,50%);  }
+
+.balloon:nth-child(4){ background:hsl(59,50%,58%); animation-duration:4.5s; }
+.balloon:nth-child(4):before { color:hsl(59,30%,52%);  }
+
+.balloon:nth-child(5){ background:hsl(23,55%,57%); animation-duration:5s; }
+.balloon:nth-child(5):before { color:hsl(23,44%,46%);  }
+
+
+    </style>
 </head>
-<body>
-    <script>
-        setTimeout(function(){
-            console.log("10")
-        },0)
-        setTimeout(function(){
-            console.log("9")
-        },1000)
-        setTimeout(function(){
-            console.log("8")
-        },2000)
-        setTimeout(function(){
-            console.log("7")
-        },3000)
-        setTimeout(function(){
-            console.log("6")
-        },4000)
-        setTimeout(function(){
-            console.log("5")
-        },5000)
-        setTimeout(function(){
-            console.log("4")
-        },6000)
-        setTimeout(function(){
-            console.log("3")
-        },7000)
-        setTimeout(function(){
-            console.log("2")
-        },8000)
-        setTimeout(function(){
-            console.log("1")
-        },9000)
-        setTimeout(function(){
-            console.log("Happy Birthday")
-        },10000)
-    </script>
+
+<body class="container center ">
+    <div id="container" >
+        <div id="msg"> <span id="count">Countdown</span></div>
+        <div id="button"><button class="btnAlign"
+                onclick="countdown(callback)">Click</button></div>
+    </div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
 </body>
+<script>
+    function countdown(callback) {
+        let ctr = 10;
+        setTimeout(() => {
+
+            setTimeout(() => {
+                ctr--;
+                setTimeout(() => {
+                    ctr--;
+                    setTimeout(() => {
+                        ctr--;
+                        setTimeout(() => {
+                            ctr--;
+                            setTimeout(() => {
+                                ctr--;
+                                setTimeout(() => {
+                                    ctr--;
+                                    setTimeout(() => {
+                                        ctr--;
+                                        setTimeout(() => {
+                                            ctr--;
+                                            setTimeout(() => {
+                                                ctr--;
+                                                setTimeout(() => {
+                                                    ctr--;
+                                                    setTimeout(() => {
+                                                        ctr--;
+
+                                                    }, 2000)
+                                                    callback(ctr);
+
+                                                }, 2000)
+                                                callback(ctr);
+                                            }, 2000)
+                                            callback(ctr);
+                                        }, 2000)
+                                        callback(ctr);
+                                    }, 2000)
+                                    callback(ctr);
+                                }, 2000)
+                                callback(ctr);
+                            }, 2000)
+                            callback(ctr);
+                        }, 2000)
+                        callback(ctr);
+                    }, 2000)
+                    callback(ctr);
+                }, 2000)
+                callback(ctr);
+            }, 2000);
+            callback(ctr);
+        }, 2000);
+    }
+    function callback(ctr) {
+        if (ctr == 0) {
+            document.getElementById("count").innerHTML = "Happy Birthday!";
+        }
+        else document.getElementById("count").innerHTML = ctr;
+    }
+
+</script>
+
 </html>
